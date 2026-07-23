@@ -18,3 +18,13 @@ services:
       retries: 3
     command: /usr/sbin/asterisk -f
     network_mode: host
+
+  sipcord-bridge:
+    build: sipcord-bridge
+    container_name: sipcord-bridge
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - sipcord-env
+    volumes:
+      - ./dialplan.toml:/app/dialplan.toml:ro

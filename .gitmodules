@@ -1,0 +1,3 @@
+[submodule "sipcord-bridge"]
+	path = sipcord-bridge
+	url = https://github.com/coral/sipcord-bridge.git
