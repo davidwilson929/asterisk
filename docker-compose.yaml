@@ -1,0 +1,20 @@
+
+services:
+  asterisk:
+    build: .
+    container_name: asterisk
+    restart: unless-stopped
+    ports:
+      - "5060:5060/udp"
+      - "5060:5060/tcp"
+      - "5038:5038/tcp"
+      - "10000-10100:10000-10100/udp"
+    volumes:
+      - ./config:/etc/asterisk
+    healthcheck:
+      test: ["CMD", "asterisk", "-rx", "core show version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: /usr/sbin/asterisk -f
+    network_mode: host
