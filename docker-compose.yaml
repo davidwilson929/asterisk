@@ -21,10 +21,11 @@ services:
 
   sipcord-bridge:
     build: sipcord-bridge
+    image: sipcord-bridge:latest
     container_name: sipcord-bridge
     restart: unless-stopped
     network_mode: host
     env_file:
       - sipcord-env
     volumes:
-      - ./dialplan.toml:/app/dialplan.toml:ro
+      - ./sipcord-dialplan.toml:/app/dialplan.toml:ro
